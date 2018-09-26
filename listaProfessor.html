@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="dist/css/plugins/bootstrap-3.3.7.css">
     <link rel="stylesheet" href="dist/css/plugins/datatables.bootstrap.css">
+    <link rel="stylesheet" href="dist/css/plugins/fontawesome.5.3.1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <link rel="stylesheet" href="dist/css/custom.css">
 
 </head>
@@ -39,11 +41,11 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>CPF</th>
+                                        <th style="width: 75px">CPF</th>
                                         <th>Nome</th>
                                         <th>Matricula</th>
-                                        <th>Disponibilidade</th>
-                                        <th>Ações</th>
+                                        <th style="width: 105px">Disponibilidade</th>
+                                        <th style="width: 43px">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody class="corpo-professores reder-tabela">
@@ -53,6 +55,9 @@
                         <!-- /.box-body -->
                     </div>
                 </div>
+                <div class="col-4">
+                    <a href="cadastroProfessor.html"><input type="button" class="btn btn-success professor-btn" id="professor-btn" value="Adicionar professor"></a>
+                </div>
             </div>
         </div>
     </main>
@@ -61,15 +66,12 @@
     <script src="dist/js/plugins/jquery.dataTables.js"></script>
     <script src="dist/js/plugins/dataTables.bootstrap.js"></script>
     <script src="dist/js/plugins/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script src="dist/js/index.js"></script>
     <script type="text/javascript">
-        $(function () {
-            $('#example1').DataTable()
-            $('#corpo-table').addClass('reder-tabela')
-            
-        })
         buscarProfessor();
-        </script>
+        
+    </script>
 </body>
 
 </html>

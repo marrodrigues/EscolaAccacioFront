@@ -12,16 +12,25 @@ function buscarProfessor(){
       });
 }
 function populaTabela(response){
-    console.log('data', response);
-        var t = $('#example1').DataTable();
+        var t = $('#example1').DataTable({columnDefs: [
+            {
+                "className": "linhas",
+                "targets": "_all"
+            }
+          ]});
         response.map((data, index) => {
             console.log(data.nome);
             t.row.add( [
                 data.cpf,
                 data.nome,
                 data.materia,
-                data.materia,
-                data.materia
-            ] ).draw( false );
+                '<i class="far fa-calendar-alt"></i>',
+                '<i class="far fa-edit"></i> <i class="far fa-trash-alt"></i>'
+            ] ).draw(false);
         });
+        centralizarTabela();
+}
+function centralizarTabela(){
+    $(".linhas").css("text-align","center");
+    
 }
