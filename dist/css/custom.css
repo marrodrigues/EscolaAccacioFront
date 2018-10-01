@@ -22,12 +22,12 @@
 	background-color: #343a40!important;
 }
 
-#nav-professor, #nav-turma{
+#nav-professor, #nav-turma, #nav-materia{
 	color: white;
 	font-size: 90%;
 	padding: 12px 0 5px 18px;
 }
-#nav-link-b33-professor a, #nav-link-b33-turma a{
+#nav-link-b33-professor a, #nav-link-b33-turma a, #nav-link-b33-materia a{
 	color: white;
 	font-size: 100%;
 	padding: 2rem 0 0 0;
@@ -37,9 +37,8 @@
 	margin-left: 2rem;
 	margin-right: 1.5rem;
 }
-.corpo-tabela{
-	width: 100%;
-	display: flex;
+#nav-link-b33-professor {
+	margin-left: 2rem;
 }
 .dados{
     margin: 3rem 0rem 3rem 0rem;
@@ -47,7 +46,25 @@
     display: flex;
     justify-content: space-between;
 }
-
+.dados-materia{
+	margin: 3rem 0rem 3rem 0rem;
+    width: 100%;
+    display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.btn-materia{
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
+	margin: 1.9rem 0px 0px 0px!important;
+}
+#tempos-select{
+	width:45%;
+}
+.salvar{
+	min-width: 7rem;
+}
 .disponibilidade{
     text-align: center
 }

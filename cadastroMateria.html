@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sistema Escola</title>
+    <meta name="description" content="Cadastro de professores.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="dist/css/plugins/bootstrap-4.1.0.min.css">
+    <link rel="stylesheet" href="dist/css/custom.css">
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+            <h1 class="navbar-brand mb-0">Cadastro de matérias</h1>
+            <div class="collapse navbar-collapse link-nav-custom" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="listaMateria.html" id="nav-materia">Matérias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listaProfessor.html" id="nav-professor">Professores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="nav-turma">Turmas</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <form class="formulario" name="formulario" method="post">
+                <div class="row">
+                    <div class="dados-materia">
+                        <div class="col-lg-4">
+                                <label for="exampleFormControlSelect1">Nome da matéria:</label>
+                            <input type="text" class="form-control valid" placeholder="Matéria" id="novaMateria" required>
+                        </div>
+                        <div class="col-lg-3">
+                                <label for="exampleFormControlSelect1">Tempos de aula:</label>
+                                <select class="form-control" id="tempos-select">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="btn-group mb-3 btn-materia">
+                                <input type="button" class="btn btn-success salvar" id="export" value="Salvar" onclick="cadastrarMateria()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="dist/js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="dist/js/plugins/jquery-ui-1.12.1.min.js"></script>
+    <script src="dist/js/plugins/jquery-validate-1.16.0.min.js"></script>
+    <script src="dist/js/plugins/axios.min.js"></script>
+    <script src="dist/js/index.js"></script>
+    
+</body>
+
+</html>

@@ -3,35 +3,35 @@
  * https://github.com/Yehzuna/jquery-schedule
  * Thomas BORUSZEWSKI <yehzuna@outlook.com>
  */
-;(function ($, window, document, undefined) {
+; (function ($, window, document, undefined) {
   'use strict';
 
   // Defaults options
   var defaults = {
-      mode: 'edit', // read
-      hour: 12, // 24
-      periodDuration: 60, // 15/30/60
-      data: [],
-      periodOptions: true,
-      periodColors: [],
-      periodTitle: '',
-      periodBackgroundColor: 'rgba(57, 204, 88)',
-      periodBorderColor: '#2a3cff',
-      periodTextColor: '#000',
-      periodRemoveButton: 'Remove',
-      periodTitlePlaceholder: 'Title',
-      days: [
-        'Segunda',
-        'Terça',
-        'Quarta',
-        'Quinta',
-        'Sexta'
-      ],
-      onInit: function () {},
-      onAddPeriod: function () {},
-      onRemovePeriod: function () {},
-      onClickPeriod: function () {}
-    },
+    mode: 'edit', // read
+    hour: 12, // 24
+    periodDuration: 60, // 15/30/60
+    data: [],
+    periodOptions: true,
+    periodColors: [],
+    periodTitle: '',
+    periodBackgroundColor: 'rgba(57, 204, 88)',
+    periodBorderColor: '#2a3cff',
+    periodTextColor: '#000',
+    periodRemoveButton: 'Remove',
+    periodTitlePlaceholder: 'Title',
+    days: [
+      'Segunda',
+      'Terça',
+      'Quarta',
+      'Quinta',
+      'Sexta'
+    ],
+    onInit: function () { },
+    onAddPeriod: function () { },
+    onRemovePeriod: function () { },
+    onClickPeriod: function () { }
+  },
     pluginName = 'jqs';
 
   // Plugin constructor
@@ -215,7 +215,7 @@
         var $this = this;
 
         $.each(this.settings.data, function (index, data) {
-          $.each(data.periods, function (index, period) {
+          $.each(data.period, function (index, period) {
 
             var parent = $('.jqs-day', $this.element).eq(data.day);
             var options = {};
@@ -230,7 +230,7 @@
             }
 
             if (height === 0) {
-              
+
               height = $this.periodHeight;
             }
 
@@ -261,17 +261,17 @@
       var periodRemove = '';
       if (this.settings.mode === 'edit') {
         periodRemove = '<div class="jqs-period-remove" title="' + this.settings.periodRemoveButton + '"></div>';
-        
+
       }
 
       var periodTitle = '<div class="jqs-period-title">' + options.title + '</div>';
       var periodTime = '<div class="jqs-period-time">' + this.periodInit(position, position + height) + '</div>';
       var period = $('<div class="jqs-period">' +
-        '<div class="jqs-period-container">' + periodTime + periodTitle + periodRemove  + '</div>' +
+        '<div class="jqs-period-container">' + periodTime + periodTitle + periodRemove + '</div>' +
         '</div>').css({
-        'top': position * this.periodPosition,
-        'height': height * this.periodPosition
-      }).attr('id', this.uniqId()).attr('title', options.title).appendTo(parent);
+          'top': position * this.periodPosition,
+          'height': height * this.periodPosition
+        }).attr('id', this.uniqId()).attr('title', options.title).appendTo(parent);
 
       $('.jqs-period-container', period).css({
         'background-color': options.backgroundColor,
@@ -430,7 +430,7 @@
         position = 0;
       }
 
-      var hour = Math.floor((position + 8)/ this.periodInterval);
+      var hour = Math.floor((position + 8) / this.periodInterval);
       var mn = ((position + 8) / this.periodInterval - hour) * 60;
 
       if (hour < 10) {
@@ -450,7 +450,7 @@
      */
     positionFormat: function (time) {
       var split = time.split(':');
-      var hour = parseInt(split[0]);
+      var hour = parseInt(split[0]) - 8;
       var mn = parseInt(split[1]);
 
       var position = 0;
@@ -476,7 +476,7 @@
           case 24:
             hour = '12am';
             break;
-          
+
           default:
             if (hour > 12) {
               hour = (hour - 12) + 'pm';
@@ -547,22 +547,31 @@
 
     checkData: function () {
       var $this = this;
-      var data = [];
+      var disponibilidade = [];
 
+      var nome = $('#nome').val();
+      var cpf = $('#cpf').val();
+      
       $('.jqs-day', $this.element).each(function (index, day) {
         var periods = [];
         $('.jqs-period', day).each(function (index, period) {
           periods.push($this.periodData($(period)));
         });
 
-        data.push({
+        disponibilidade.push({
           day: index,
           periods: periods
         });
-        console.log(data);
       });
+      var data = {
+        nome: nome,
+        cpf: cpf,
+        disponibilidade: disponibilidade
+      }
       return data;
     }
+
+    
   });
 
   $.fn[pluginName] = function (options) {

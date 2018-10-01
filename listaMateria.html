@@ -19,7 +19,7 @@
     <header>
         <nav class="navbar navbar-inverse" id="nav-total">
             <div class="col-xs-7">
-                <h1 class="titulo-nav navbar-brand">Lista de professores</h1>
+                <h1 class="titulo-nav navbar-brand">Lista de matérias</h1>
             </div>
             <div class="nav-custom col-xs-5">
                 <div class="link-nav-custom" id="nav-link-b33-materia">
@@ -38,17 +38,15 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-6">
                     <div class="box">
-                        <div class="box-body">
+                        <div class="box-body" id="corpo-table-materia">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th style="width: 85px">CPF</th>
-                                        <th>Nome</th>
                                         <th>Matéria</th>
-                                        <th style="width: 105px">Disponibilidade</th>
-                                        <th style="width: 43px">Ações</th>
+                                        <th>Tempo</th>
+                                        <th style="width: 113px">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody class="corpo-professores reder-tabela">
@@ -58,8 +56,8 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <a href="cadastroProfessor.html"><input type="button" class="btn btn-success professor-btn" id="professor-btn"
-                            value="Adicionar professor"></a>
+                    <a href="cadastroMateria.html"><input type="button" class="btn btn-success professor-btn" id="professor-btn"
+                            value="Adicionar matéria"></a>
                 </div>
             </div>
         </div>
@@ -72,12 +70,12 @@
     <script src="dist/js/plugins/jquery.sweet-modal.min.js"></script>
     <script src="dist/js/index.js"></script>
     <script type="text/javascript">
-        buscarProfessor();
+        buscarTableMateria();
 
-        function deletarProfessor() {
-            $.sweetModal.confirm('Deseja deletar o professor?', function () {
+        function deletarMateria() {
+            $.sweetModal.confirm('Deseja deletar a matéria?', function () {
                 //axios delete
-                $.sweetModal('Professor deletado');
+                $.sweetModal('matéria deletada');
             });
         }
     </script>
