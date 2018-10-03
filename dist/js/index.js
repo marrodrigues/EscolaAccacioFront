@@ -7,15 +7,7 @@ function buscarProfessor(){
             'Content-Type': 'application/json'
         }
       }).then(function(response) {
-          console.log(response);
-        var cpf = response.data.cpf;
-        var nome = response.data.nome;
-        var materia = buscarMateriaProfessor(cpf);
-        var data = {
-            nome: nome,
-            cpf: cpf,
-            materia: materia.materiaId
-        }
+        console.log(response);
         return populaTabela(response.data);
       }).catch(function(error) {
         console.log(error);
@@ -43,9 +35,9 @@ function populaTabela(response){
           ]});
         response.map((data, index) => {
             t.row.add( [
-                cpf,
-                nome,
-                materia,
+                data.cpf,
+                data.nome,
+                data.materiaId.materia,
                 '<i class="far fa-calendar-alt disponivel"></i>',
                 '<i class="far fa-edit"></i> <i onclick="deletarProfessor()" class="far fa-trash-alt"></i>'
             ] ).draw(false);
@@ -68,15 +60,16 @@ function buscarMateriaPorId(materiaId){
   }
 function cadastrarProfessor() {
     var data = $('#schedule3').jqs('export');
-    var materiaId = $('#materia').val();
-    var materia = buscarMateriaPorId(materiaId);
+    var nome = $('#nome').val();
+    var cpf = $('#cpf').val();
+    var materiaId = $('#materia option:selected').data('json');
     var professor = {
-        nome: data.nome,
-        cpf: data.cpf,
-        materiaId: materia,
+        nome: nome,
+        cpf: cpf,
+        materiaId: materiaId,
         disponibilidade: data.disponibilidade
     }
-    console.log(professor);
+    console.log(materiaId.materia);
     enviaProfessor(professor);
 }
 function enviaProfessor(dados) {
@@ -107,7 +100,7 @@ function buscarMateria(){
             var select = $("#materia");
             select.find('option').remove();
             response.data.map((d, i) => {
-              $('<option>').val(d.materiaId).text(d.materia).appendTo(select);
+              $('<option>').val(d.materiaId).text(d.materia).data("json",d).appendTo(select);
             });
         }
       }).catch(function(error) {
@@ -130,6 +123,8 @@ function buscarTableMateria(){
 function populaTabelaMateria(response){
     var t = $('#example1').DataTable({columnDefs: [
         {
+            "oLanguage": {
+                "sEmptyTable":"Não existem matérias cadastradas"},
             "className": "linhas",
             "targets": "_all"
         }
@@ -138,7 +133,7 @@ function populaTabelaMateria(response){
         t.row.add( [
             data.materia,
             data.tempo,
-            '<i class="far fa-edit"></i> <i onclick="deletarProfessor()" class="far fa-trash-alt"></i>'
+            '<i class="far fa-edit"></i> <i onclick="deletarMateria()" class="far fa-trash-alt"></i>'
         ] ).draw(false);
     });
     centralizarTabela();
@@ -163,6 +158,7 @@ function enviaMateria(dados) {
       }).then(function(response) {
         console.log(response);
         alert("Materia cadastrada");
+        document.location.href = "listaMateria.html";
       }).catch(function(error) {
         console.log(error);
       });

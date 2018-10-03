@@ -542,15 +542,12 @@
      */
     export: function () {
       var data = this.checkData();
-      return JSON.stringify(data);
+      return data;
     },
 
     checkData: function () {
       var $this = this;
       var disponibilidade = [];
-
-      var nome = $('#nome').val();
-      var cpf = $('#cpf').val();
       
       $('.jqs-day', $this.element).each(function (index, day) {
         var periods = [];
@@ -564,8 +561,6 @@
         });
       });
       var data = {
-        nome: nome,
-        cpf: cpf,
         disponibilidade: disponibilidade
       }
       return data;
