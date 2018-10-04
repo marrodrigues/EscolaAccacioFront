@@ -83,6 +83,7 @@ function enviaProfessor(dados) {
       }).then(function(response) {
         console.log(response);
         alert("Professor cadastrado");
+        document.location.href = "listaProfessor.html";
       }).catch(function(error) {
         console.log(error);
       });
