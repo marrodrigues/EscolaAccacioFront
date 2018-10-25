@@ -10,7 +10,7 @@ function buscarProfessor(){
         console.log(response);
         return populaTabela(response.data);
       }).catch(function(error) {
-        console.log(error);
+        alert(error);
       });
 }
 function buscarMateriaProfessor(cpf){
@@ -84,8 +84,9 @@ function enviaProfessor(dados) {
         console.log(response);
         alert("Professor cadastrado");
         document.location.href = "listaProfessor.html";
-      }).catch(function(error) {
-        console.log(error);
+      }).catch(function(error, response) {
+        console.log(error)
+        alert(error.response.data);
       });
 }
 //FUNÇÕES MATERIA
@@ -101,7 +102,7 @@ function buscarMateria(){
             var select = $("#materia");
             select.find('option').remove();
             response.data.map((d, i) => {
-              $('<option>').val(d.materiaId).text(d.materia).data("json",d).appendTo(select);
+              $('<option>').val(d.materiaId).text(d.codigo + " - " + d.materia).data("json",d).appendTo(select);
             });
         }
       }).catch(function(error) {
@@ -132,6 +133,7 @@ function populaTabelaMateria(response){
       ]});
     response.map((data, index) => {
         t.row.add( [
+            data.codigo,
             data.materia,
             data.tempo,
             '<i class="far fa-edit"></i> <i onclick="deletarMateria()" class="far fa-trash-alt"></i>'
@@ -140,11 +142,14 @@ function populaTabelaMateria(response){
     centralizarTabela();
 }
 function cadastrarMateria() {
+    var codigo = $("#novaMateriaCodigo").val();
     var materia = $("#novaMateria").val();
     var tempo = $("#tempos-select").val();
     var data = {
+        codigo: codigo,
         materia: materia,
-        tempo: tempo
+        tempo: tempo,
+        turmas: []
     }
     enviaMateria(data);
 }

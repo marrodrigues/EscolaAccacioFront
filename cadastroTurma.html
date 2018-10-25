@@ -15,7 +15,7 @@
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
-            <h1 class="navbar-brand mb-0">Cadastro de matérias</h1>
+            <h1 class="navbar-brand mb-0">Cadastro de turmas</h1>
             <div class="collapse navbar-collapse link-nav-custom" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -25,7 +25,7 @@
                         <a class="nav-link" href="listaProfessor.html" id="nav-professor">Professores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="nav-turma">Turmas</a>
+                        <a class="nav-link" href="listaTurma.html" id="nav-turma">Turmas</a>
                     </li>
                 </ul>
             </div>
@@ -37,24 +37,20 @@
             <form class="formulario" name="formulario" method="post">
                 <div class="row">
                     <div class="dados-materia">
-                            <div class="col-lg-3">
-                                    <label for="exampleFormControlSelect1">Código da matéria:</label>
-                                <input type="text" class="form-control valid" placeholder="Código da matéria" id="novaMateriaCodigo" required>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                    <label for="exampleFormControlSelect1">Código da turma:</label>
+                                <input type="text" class="form-control valid" placeholder="Código da turma" id="novaMateria" required>
                             </div>
-                        <div class="col-lg-3">
-                                <label for="exampleFormControlSelect1">Nome da matéria:</label>
-                            <input type="text" class="form-control valid" placeholder="Nome da matéria" id="novaMateria" required>
                         </div>
-                        <div class="col-lg-3">
-                                <label for="exampleFormControlSelect1">Tempos de aula:</label>
-                                <select class="form-control" id="tempos-select">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                </select>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                    <label for="exampleFormControlSelect1">1º matéria:</label>
+                                    <select class="form-control" id="materia">
+                                    </select>
+                            </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="btn-group mb-3 btn-materia">
                                 <input type="button" class="btn btn-success salvar" id="export" value="Salvar" onclick="cadastrarMateria()">
                             </div>
@@ -74,7 +70,11 @@
     <script src="dist/js/plugins/jquery-validate-1.16.0.min.js"></script>
     <script src="dist/js/plugins/axios.min.js"></script>
     <script src="dist/js/index.js"></script>
-    
+    <script>
+        $(function () {
+            buscarMateria();
+        });
+    </script>
 </body>
 
 </html>
