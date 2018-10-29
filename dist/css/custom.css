@@ -46,13 +46,15 @@
     display: flex;
     justify-content: space-between;
 }
-.dados-materia{
+.dados-materia, .dados-turma{
 	margin: 3rem 0rem 3rem 0rem;
-    width: 100%;
-    display: flex;
-	justify-content: space-around;
-	align-items: center;
+	width: 100%;
 }
+
+.dados-materia{
+	display: flex;
+}
+
 .btn-materia{
 	display: flex;
 	justify-content: flex-start;
@@ -68,6 +70,60 @@
 .disponibilidade{
     text-align: center
 }
+
+.materia-select, .materia{
+	display: flex;
+	justify-content: space-around;
+}
+.materia{
+	width:20rem;
+	margin-top: 1rem;
+	margin-right: 1rem;
+}
+.label-select{
+	width: 6rem;
+	margin-top: 1.5rem;
+}
+.info-materia{
+	display: flex;
+	padding-left:.2rem;
+	justify-content: center;
+}
+.linhas{
+	text-align: center;
+}
+.linha-materia{
+	justify-content: space-around;
+	display: flex;
+}
+.label-info-materia{
+	padding-right: 1rem;
+	margin-top: .5rem;
+	margin-left: .9rem;
+}
+
+#codigoMateria{
+	width:17rem;
+}
+
+#codigo-info-materia, {
+	width: 8rem;
+}
+
+#serie-info-materia{
+	width: 3rem;
+	margin-left: .8rem;
+}
+
+#serie-select {
+	width: 20rem;
+	margin-left: .7rem;
+}
+
+#qtdCredito{
+	margin-bottom: 3rem;
+}
+
 /*codigo puglins*/
 body,
 html {

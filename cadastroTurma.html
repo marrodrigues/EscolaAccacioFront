@@ -35,25 +35,67 @@
     <main>
         <div class="container">
             <form class="formulario" name="formulario" method="post">
-                <div class="row">
-                    <div class="dados-materia">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                    <label for="exampleFormControlSelect1">Código da turma:</label>
-                                <input type="text" class="form-control valid" placeholder="Código da turma" id="novaMateria" required>
+                <div class="dados-turma">
+                    <div class="row linha-materia">
+                        <div class="info-materia col-lg-3">
+                            <label class="label-info-materia" id="qtdCredito"><strong>CREDITOS DA TURMA: 0</strong></label>
+                        </div>
+                    </div>
+                    <div class="row linha-materia">
+                        <div class="info-materia col-lg-6">
+                            <label class="label-info-materia" id="codigo-info-materia" for="materia">Código da turma:</label>
+                            <input type="text" class="form-control valid" placeholder="Código da turma" id="codigoMateria"
+                                required>
+                        </div>
+                        <div class="info-materia col-lg-6">
+                            <label for="exampleFormControlSelect1" class="label-info-materia" id="serie-info-materia">Série:</label>
+                            <select class="form-control" id="serie-select">
+                                <option value="6">6º Ano</option>
+                                <option value="7">7º Ano</option>
+                                <option value="8">8º Ano</option>
+                                <option value="9">9º Ano</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row linha-materia">
+                        <div class="materia-select col-lg-12">
+                            <div class=" materia-select">
+                                <label for="1materia" class="label-select">1º matéria:</label>
+                                <select onChange=calculaCredito() class="materia form-control" id="1materia"></select>
+                            </div>
+                            <div class="materia-select">
+                                <label for="2materia" class="label-select">2º matéria:</label>
+                                <select onChange=calculaCredito() class="materia form-control" id="2materia"></select>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-4">
-                                    <label for="exampleFormControlSelect1">1º matéria:</label>
-                                    <select class="form-control" id="materia">
-                                    </select>
+                    </div>
+                    <div class="row linha-materia">
+                        <div class="materia-select col-lg-12">
+                            <div class=" materia-select">
+                                <label for="3materia" class="label-select">3º matéria:</label>
+                                <select onChange=calculaCredito() class="materia form-control" id="3materia"></select>
+                            </div>
+                            <div class=" materia-select">
+                                <label for="4materia" class="label-select">4º matéria:</label>
+                                <select onChange=calculaCredito() class="materia form-control" id="4materia"></select>
                             </div>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="btn-group mb-3 btn-materia">
-                                <input type="button" class="btn btn-success salvar" id="export" value="Salvar" onclick="cadastrarMateria()">
+                    </div>
+                    <div class="row linha-materia">
+                        <div class="materia-select col-lg-12">
+                            <div class=" materia-select">
+                                <label for="5materia" class="label-select">5º matéria:</label>
+                                <select onChange=calculaCredito() class="materia form-control" id="5materia"></select>
                             </div>
+                            <div class=" materia-select">
+                                <label for="6materia" class="label-select">6º matéria:</label>
+                                <select onChange=calculaCredito() class="materia form-control" id="6materia"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="btn-group mb-3 btn-materia">
+                            <input type="button" class="btn btn-success salvar" id="export" value="Salvar" onclick="cadastrarTurma()">
                         </div>
                     </div>
                 </div>
@@ -61,18 +103,20 @@
         </div>
     </main>
 
-    <footer>
-
-    </footer>
-
     <script src="dist/js/plugins/jquery-3.3.1.min.js"></script>
+    <script src="dist/js/plugins/jquery-ui-1.12.1.min.js"></script>
     <script src="dist/js/plugins/jquery-ui-1.12.1.min.js"></script>
     <script src="dist/js/plugins/jquery-validate-1.16.0.min.js"></script>
     <script src="dist/js/plugins/axios.min.js"></script>
     <script src="dist/js/index.js"></script>
     <script>
         $(function () {
-            buscarMateria();
+            buscarMateria('#1materia');
+            buscarMateria('#2materia');
+            buscarMateria('#3materia');
+            buscarMateria('#4materia');
+            buscarMateria('#5materia');
+            buscarMateria('#6materia');
         });
     </script>
 </body>

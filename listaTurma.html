@@ -44,11 +44,11 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th style="width: 85px">CPF</th>
-                                        <th>Nome</th>
-                                        <th>Matéria</th>
-                                        <th style="width: 105px">Disponibilidade</th>
-                                        <th style="width: 43px">Ações</th>
+                                        <th>Código da turma</th>
+                                        <th style="width: 175px">Créditos da turma</th>
+                                        <th style="width: 145px">Série</th>
+                                        <th style="width: 135px">Quadro horário</th>
+                                        <th style="width: 105px">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody class="corpo-professores reder-tabela">
@@ -58,8 +58,8 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <a href="cadastroProfessor.html"><input type="button" class="btn btn-success professor-btn" id="professor-btn"
-                            value="Adicionar professor"></a>
+                    <a href="cadastroTurma.html"><input type="button" class="btn btn-success turma-btn" id="turma-btn"
+                            value="Adicionar turma"></a>
                 </div>
             </div>
         </div>
@@ -72,12 +72,12 @@
     <script src="dist/js/plugins/jquery.sweet-modal.min.js"></script>
     <script src="dist/js/index.js"></script>
     <script type="text/javascript">
-        buscarProfessor();
+        buscarTurma();
 
-        function deletarProfessor() {
-            $.sweetModal.confirm('Deseja deletar o professor?', function () {
+        function deletarTurma() {
+            $.sweetModal.confirm('Deseja deletar a turma?', function () {
                 //axios delete
-                $.sweetModal('Professor deletado');
+                $.sweetModal('Turma deletada');
             });
         }
     </script>
